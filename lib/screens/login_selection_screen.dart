@@ -22,25 +22,42 @@ class LoginSelectionScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 48),
-              ElevatedButton(
-                onPressed: () => Navigator.pushNamed(context, '/upm_login'),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 48),
-                  backgroundColor: Colors.green,
-                ),
-                child: Text('Login as UPM User'),
-              ),
-              SizedBox(height: 16),
-              OutlinedButton(
-                onPressed: () => Navigator.pushNamed(context, '/guest_login'),
-                style: OutlinedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 48),
-                  side: BorderSide(color: Colors.green),
-                ),
-                child: Text(
-                  'Continue as Guest',
-                  style: TextStyle(color: Colors.green),
-                ),
+
+              // Row of buttons
+              Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton.icon(
+                      onPressed: () => Navigator.pushNamed(context, '/upm_login'),
+                      icon: Icon(Icons.school),
+                      label: Text('Login with UPM ID'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green,
+                        foregroundColor: Colors.white,
+                        minimumSize: Size(0, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 16),
+                  Expanded(
+                    child: OutlinedButton.icon(
+                      onPressed: () => Navigator.pushNamed(context, '/public_login'),
+                      icon: Icon(Icons.mail_outline),
+                      label: Text('Login with Email'),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: Colors.green,
+                        side: BorderSide(color: Colors.green),
+                        minimumSize: Size(0, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
