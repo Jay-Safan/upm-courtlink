@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 // Screens
-import 'screens/login_selection_screen.dart';
-import 'screens/upm_login_screen.dart';
-import 'screens/public_user_login_screen.dart';
-import 'screens/public_register_screen.dart';
+import 'screens/auth/login_selection_screen.dart'; 
+import 'screens/auth/upm_login_screen.dart';
+import 'screens/auth/public_user_login_screen.dart';
+import 'screens/auth/public_register_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/booking_screen.dart';
 import 'screens/wallet_screen.dart';
