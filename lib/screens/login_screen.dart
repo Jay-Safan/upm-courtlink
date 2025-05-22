@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
   bool _isLoading = false;
 
   void _handleLogin() async {
@@ -17,7 +16,8 @@ class _LoginScreenState extends State<LoginScreen> {
     final email = _emailController.text.trim();
     final password = _passwordController.text;
 
-    // Dummy login logic (replace with Firebase later)
+    await Future.delayed(Duration(seconds: 1)); // Simulate loading
+
     if (email == 'test@upm.edu.my' && password == '123456') {
       Navigator.pushReplacementNamed(context, '/home');
     } else {
@@ -38,48 +38,81 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('UPM CourtLink Login')),
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Welcome to UPM CourtLink',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-            SizedBox(height: 32),
-            TextField(
-              controller: _emailController,
-              decoration: InputDecoration(
-                labelText: 'Email (e.g., yourid@upm.edu.my)',
-                border: OutlineInputBorder(),
+      backgroundColor: Colors.grey.shade100,
+      body: Center(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(horizontal: 32),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.sports_tennis, size: 72, color: Colors.green),
+              SizedBox(height: 12),
+              Text(
+                'UPM CourtLink',
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green.shade700,
+                ),
               ),
-              keyboardType: TextInputType.emailAddress,
-            ),
-            SizedBox(height: 16),
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'Password',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 24),
-            _isLoading
-                ? CircularProgressIndicator()
-                : ElevatedButton(
-                    onPressed: _handleLogin,
-                    child: Text('Login'),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 48),
+              SizedBox(height: 32),
+              Container(
+                padding: EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 12,
+                      offset: Offset(0, 6),
                     ),
-                  ),
-            SizedBox(height: 12),
-            TextButton(
-              onPressed: _handleRegister,
-              child: Text('Don\'t have an account? Register'),
-            ),
-          ],
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    TextField(
+                      controller: _emailController,
+                      decoration: InputDecoration(
+                        labelText: 'UPM Email',
+                        hintText: 'you@upm.edu.my',
+                        border: OutlineInputBorder(),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                    SizedBox(height: 16),
+                    TextField(
+                      controller: _passwordController,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    SizedBox(height: 24),
+                    _isLoading
+                        ? CircularProgressIndicator()
+                        : ElevatedButton(
+                            onPressed: _handleLogin,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.green,
+                              minimumSize: Size(double.infinity, 48),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                            child: Text('Login'),
+                          ),
+                    SizedBox(height: 12),
+                    TextButton(
+                      onPressed: _handleRegister,
+                      child: Text('Don’t have an account? Register'),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
