@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
+import '../admin/admin_panel.dart';
 
-class UPMLoginScreen extends StatefulWidget {
+class AdminLoginScreen extends StatefulWidget {
   @override
-  _UPMLoginScreenState createState() => _UPMLoginScreenState();
+  _AdminLoginScreenState createState() => _AdminLoginScreenState();
 }
 
-class _UPMLoginScreenState extends State<UPMLoginScreen> {
+class _AdminLoginScreenState extends State<AdminLoginScreen> {
   final _emailCtrl = TextEditingController();
   final _passCtrl = TextEditingController();
   bool _loading = false;
+  String? _error;
 
   void _login() async {
-    setState(() => _loading = true);
-    await Future.delayed(Duration(seconds: 1)); // Simulate login
-    setState(() => _loading = false);
-    Navigator.pushReplacementNamed(context, '/home');
+    // Simulate login for UI demo: always go to admin panel
+    Navigator.pushReplacementNamed(context, '/admin');
   }
 
   @override
@@ -22,7 +22,7 @@ class _UPMLoginScreenState extends State<UPMLoginScreen> {
     return Scaffold(
       backgroundColor: Colors.red.shade50,
       appBar: AppBar(
-        title: Text('UPM Member Login', style: TextStyle(color: Colors.white)),
+        title: Text('Admin Login', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.red,
         iconTheme: IconThemeData(color: Colors.white),
       ),
@@ -32,10 +32,10 @@ class _UPMLoginScreenState extends State<UPMLoginScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.school, size: 60, color: Colors.red.shade700),
+              Icon(Icons.admin_panel_settings, size: 60, color: Colors.red.shade700),
               SizedBox(height: 16),
               Text(
-                'UPM Email Login',
+                'UPM Admin Login',
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
@@ -46,7 +46,7 @@ class _UPMLoginScreenState extends State<UPMLoginScreen> {
               TextField(
                 controller: _emailCtrl,
                 decoration: InputDecoration(
-                  labelText: 'UPM Email',
+                  labelText: 'Admin Email',
                   border: OutlineInputBorder(),
                 ),
                 keyboardType: TextInputType.emailAddress,
@@ -60,6 +60,10 @@ class _UPMLoginScreenState extends State<UPMLoginScreen> {
                   border: OutlineInputBorder(),
                 ),
               ),
+              if (_error != null) ...[
+                SizedBox(height: 16),
+                Text(_error!, style: TextStyle(color: Colors.red)),
+              ],
               SizedBox(height: 32),
               _loading
                   ? CircularProgressIndicator()
@@ -73,7 +77,7 @@ class _UPMLoginScreenState extends State<UPMLoginScreen> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      child: Text('Login'),
+                      child: Text('Login as Admin'),
                     ),
             ],
           ),

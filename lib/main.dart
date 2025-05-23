@@ -5,12 +5,13 @@ import 'screens/auth/login_selection_screen.dart';
 import 'screens/auth/upm_login_screen.dart';
 import 'screens/auth/public_user_login_screen.dart';
 import 'screens/auth/public_register_screen.dart';
-import 'screens/home_screen.dart';
-import 'screens/wallet_screen.dart';
-import 'screens/history_screen.dart';
-import 'screens/admin_panel.dart';
-import 'screens/select_sport_screen.dart';
-import 'screens/tennis_booking_form_screen.dart';
+import 'screens/user/home_screen.dart';
+import 'screens/user/wallet_screen.dart';
+import 'screens/user/history_screen.dart';
+import 'screens/user/tennis_booking_form_screen.dart';
+import 'screens/user/select_sport_screen.dart';
+import 'screens/admin/admin_panel.dart';
+import 'screens/auth/admin_login_screen.dart';
 
 void main() {
   runApp(UPMCourtLinkApp());
@@ -38,6 +39,7 @@ class UPMCourtLinkApp extends StatelessWidget {
         '/wallet': (context) => WalletScreen(),
         '/history': (context) => HistoryScreen(),
         '/admin': (context) => AdminPanel(),
+        '/admin_login': (context) => AdminLoginScreen(),
       },
     );
   }

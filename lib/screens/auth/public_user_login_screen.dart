@@ -26,8 +26,9 @@ class _PublicUserLoginScreenState extends State<PublicUserLoginScreen> {
     return Scaffold(
       backgroundColor: Colors.red.shade50,
       appBar: AppBar(
-        title: Text('Login with Email'),
+        title: Text('Login with Email', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.red,
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       body: Center(
         child: SingleChildScrollView(

@@ -68,6 +68,20 @@ class LoginSelectionScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(height: 24),
+              ElevatedButton.icon(
+                onPressed: () => Navigator.pushNamed(context, '/admin_login'),
+                icon: Icon(Icons.admin_panel_settings),
+                label: Text('Login as Admin'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red.shade800,
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(double.infinity, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

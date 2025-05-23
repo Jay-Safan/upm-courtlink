@@ -15,8 +15,9 @@ class PublicRegisterScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.red.shade50,
       appBar: AppBar(
-        title: Text('Create Public User Account'),
+        title: Text('Create Public User Account', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.red,
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       body: Center(
         child: SingleChildScrollView(
