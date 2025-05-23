@@ -115,7 +115,8 @@ class _TennisBookingFormScreenState extends State<TennisBookingFormScreen> {
                 ElevatedButton.icon(
                   onPressed: (selectedDate != null && selectedTime != null && selectedCourt != null)
                       ? () {
-                          // TODO: Handle booking confirmation
+                          // Navigate to booking success screen after mock booking
+                          Navigator.pushNamed(context, '/booking_success');
                         }
                       : null,
                   icon: Icon(Icons.check_circle_outline),

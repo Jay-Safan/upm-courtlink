@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'view_bookings_screen.dart';
+import 'manage_facilities_screen.dart';
+import 'transactions_screen.dart';
+import 'analytics_screen.dart';
 
 class AdminPanel extends StatelessWidget {
   @override
@@ -21,26 +25,38 @@ class AdminPanel extends StatelessWidget {
             AdminPanelButton(
               icon: Icons.event_note,
               label: 'Booking Overview',
-              onTap: () {},
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => ViewBookingsScreen()),
+              ),
             ),
             SizedBox(height: 16),
             AdminPanelButton(
               icon: Icons.sports_tennis,
               label: 'Facility Management',
-              onTap: () {},
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => ManageFacilitiesScreen()),
+              ),
             ),
             SizedBox(height: 16),
             AdminPanelButton(
               icon: Icons.account_balance_wallet,
               label: 'User Transactions',
-              onTap: () {},
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => TransactionsScreen()),
+              ),
             ),
             SizedBox(height: 16),
             AdminPanelButton(
               icon: Icons.analytics,
               label: 'Analytics (Coming Soon)',
-              onTap: () {},
-              disabled: true,
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => AnalyticsScreen()),
+              ),
+              disabled: false,
             ),
           ],
         ),

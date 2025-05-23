@@ -12,6 +12,13 @@ import 'screens/user/tennis_booking_form_screen.dart';
 import 'screens/user/select_sport_screen.dart';
 import 'screens/admin/admin_panel.dart';
 import 'screens/auth/admin_login_screen.dart';
+import 'screens/admin/view_bookings_screen.dart';
+import 'screens/admin/manage_facilities_screen.dart';
+import 'screens/admin/transactions_screen.dart';
+import 'screens/admin/analytics_screen.dart';
+import 'screens/user/profile_screen.dart';
+import 'screens/user/booking_success_screen.dart';
+import 'screens/user/cancel_booking_screen.dart';
 
 void main() {
   runApp(UPMCourtLinkApp());
@@ -40,6 +47,13 @@ class UPMCourtLinkApp extends StatelessWidget {
         '/history': (context) => HistoryScreen(),
         '/admin': (context) => AdminPanel(),
         '/admin_login': (context) => AdminLoginScreen(),
+        '/view_bookings': (context) => ViewBookingsScreen(),
+        '/manage_facilities': (context) => ManageFacilitiesScreen(),
+        '/transactions': (context) => TransactionsScreen(),
+        '/analytics': (context) => AnalyticsScreen(),
+        '/profile': (context) => ProfileScreen(),
+        '/booking_success': (context) => BookingSuccessScreen(),
+        '/cancel_booking': (context) => CancelBookingScreen(),
       },
     );
   }

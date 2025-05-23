@@ -64,12 +64,25 @@ class HistoryScreen extends StatelessWidget {
                     leading: Icon(Icons.sports_tennis, color: Colors.red.shade400),
                     title: Text('${booking['court']}  |  ${booking['date']}', style: TextStyle(fontWeight: FontWeight.bold)),
                     subtitle: Text('${booking['time']}'),
-                    trailing: Text(
-                      booking['status'] ?? '',
-                      style: TextStyle(
-                        color: booking['status'] == 'Completed' ? Colors.green : Colors.red,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          booking['status'] ?? '',
+                          style: TextStyle(
+                            color: booking['status'] == 'Completed' ? Colors.green : Colors.red,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        if (booking['status'] == 'Completed')
+                          IconButton(
+                            icon: Icon(Icons.cancel, color: Colors.red),
+                            tooltip: 'Cancel Booking',
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/cancel_booking');
+                            },
+                          ),
+                      ],
                     ),
                   ),
                 );

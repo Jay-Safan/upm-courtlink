@@ -85,6 +85,20 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(height: 16),
+              ElevatedButton.icon(
+                onPressed: () => Navigator.pushNamed(context, '/profile'),
+                icon: Icon(Icons.person),
+                label: Text('Profile'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red.shade100,
+                  foregroundColor: Colors.red.shade800,
+                  minimumSize: Size(double.infinity, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
