@@ -4,24 +4,104 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Home')),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(child: Text('Welcome to UPM CourtLink')),
-          ElevatedButton(
-            child: Text('Book Court'),
-            onPressed: () => Navigator.pushNamed(context, '/booking'),
+      backgroundColor: Colors.red.shade50,
+      appBar: AppBar(
+        title: Text('UPM CourtLink'),
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+        elevation: 0,
+      ),
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 32),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                Icons.emoji_events,
+                size: 80,
+                color: Colors.red.shade700,
+              ),
+              SizedBox(height: 16),
+              Text(
+                'UPM CourtLink',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.red.shade800,
+                ),
+              ),
+              Text(
+                'Smart Sports Booking System',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.red.shade600,
+                ),
+              ),
+              SizedBox(height: 32),
+              Text(
+                'Welcome! What would you like to do?',
+                style: TextStyle(fontSize: 18, color: Colors.red.shade800),
+              ),
+              SizedBox(height: 24),
+              ElevatedButton.icon(
+                onPressed: () => Navigator.pushNamed(context, '/booking'),
+                icon: Icon(Icons.sports_tennis),
+                label: Text('Book Court'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(double.infinity, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+              SizedBox(height: 16),
+              ElevatedButton.icon(
+                onPressed: () => Navigator.pushNamed(context, '/wallet'),
+                icon: Icon(Icons.account_balance_wallet),
+                label: Text('Wallet'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red.shade100,
+                  foregroundColor: Colors.red.shade800,
+                  minimumSize: Size(double.infinity, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+              SizedBox(height: 16),
+              ElevatedButton.icon(
+                onPressed: () => Navigator.pushNamed(context, '/history'),
+                icon: Icon(Icons.history),
+                label: Text('Booking History'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red.shade100,
+                  foregroundColor: Colors.red.shade800,
+                  minimumSize: Size(double.infinity, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+              SizedBox(height: 16),
+              OutlinedButton.icon(
+                onPressed: () => Navigator.pushNamed(context, '/admin'),
+                icon: Icon(Icons.admin_panel_settings),
+                label: Text('Admin Panel'),
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: Colors.red,
+                  side: BorderSide(color: Colors.red),
+                  minimumSize: Size(double.infinity, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+            ],
           ),
-          ElevatedButton(
-            child: Text('Wallet'),
-            onPressed: () => Navigator.pushNamed(context, '/wallet'),
-          ),
-          ElevatedButton(
-            child: Text('Admin'),
-            onPressed: () => Navigator.pushNamed(context, '/admin'),
-          ),
-        ],
+        ),
       ),
     );
   }
