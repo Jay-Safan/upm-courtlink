@@ -45,8 +45,8 @@ class HomeScreen extends StatelessWidget {
               ),
               SizedBox(height: 24),
               ElevatedButton.icon(
-                onPressed: () => Navigator.pushNamed(context, '/booking'),
-                icon: Icon(Icons.sports_tennis),
+                onPressed: () => Navigator.pushNamed(context, '/select_sport'),
+                icon: Icon(Icons.emoji_events),
                 label: Text('Book Court'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,

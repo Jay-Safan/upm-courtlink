@@ -35,9 +35,14 @@ class HistoryScreen extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        backgroundColor: Colors.red.shade50,
         appBar: AppBar(
           title: Text('History'),
+          backgroundColor: Colors.red,
+          foregroundColor: Colors.white,
+          elevation: 0,
           bottom: TabBar(
+            indicatorColor: Colors.white,
             tabs: [
               Tab(text: 'Bookings'),
               Tab(text: 'Transactions'),
@@ -48,22 +53,21 @@ class HistoryScreen extends StatelessWidget {
           children: [
             // --- BOOKINGS TAB ---
             ListView.builder(
-              padding: EdgeInsets.all(8),
+              padding: EdgeInsets.all(24),
               itemCount: _bookings.length,
               itemBuilder: (context, i) {
-                final b = _bookings[i];
+                final booking = _bookings[i];
                 return Card(
-                  margin: EdgeInsets.symmetric(vertical: 6),
+                  margin: EdgeInsets.only(bottom: 16),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   child: ListTile(
-                    leading: Icon(Icons.calendar_today),
-                    title: Text('${b['court']}'),
-                    subtitle: Text('${b['date']} • ${b['time']}'),
+                    leading: Icon(Icons.sports_tennis, color: Colors.red.shade400),
+                    title: Text('${booking['court']}  |  ${booking['date']}', style: TextStyle(fontWeight: FontWeight.bold)),
+                    subtitle: Text('${booking['time']}'),
                     trailing: Text(
-                      b['status']!,
+                      booking['status'] ?? '',
                       style: TextStyle(
-                        color: b['status'] == 'Completed'
-                            ? Colors.green
-                            : Colors.red,
+                        color: booking['status'] == 'Completed' ? Colors.green : Colors.red,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -71,29 +75,26 @@ class HistoryScreen extends StatelessWidget {
                 );
               },
             ),
-
             // --- TRANSACTIONS TAB ---
             ListView.builder(
-              padding: EdgeInsets.all(8),
+              padding: EdgeInsets.all(24),
               itemCount: _transactions.length,
               itemBuilder: (context, i) {
-                final t = _transactions[i];
+                final tx = _transactions[i];
                 return Card(
-                  margin: EdgeInsets.symmetric(vertical: 6),
+                  margin: EdgeInsets.only(bottom: 16),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   child: ListTile(
                     leading: Icon(
-                      t['type'] == 'Top-Up'
-                          ? Icons.account_balance_wallet
-                          : Icons.reply,
+                      tx['type'] == 'Top-Up' ? Icons.add_circle_outline : Icons.monetization_on,
+                      color: tx['type'] == 'Top-Up' ? Colors.green : Colors.orange,
                     ),
-                    title: Text(t['type']!),
-                    subtitle: Text('${t['date']}'),
+                    title: Text('${tx['type']}', style: TextStyle(fontWeight: FontWeight.bold)),
+                    subtitle: Text('${tx['date']}'),
                     trailing: Text(
-                      t['amount']!,
+                      tx['amount'] ?? '',
                       style: TextStyle(
-                        color: t['amount']!.startsWith('+')
-                            ? Colors.green
-                            : Colors.red,
+                        color: tx['amount'] != null && tx['amount']!.contains('+') ? Colors.green : Colors.red,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
